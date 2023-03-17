@@ -1,5 +1,5 @@
 # oiocns-standardAttribute-go
-标准分类特性导入小工具
+奥集能3.0平台分类标准特性和字典导入工具。
 
 ## 上架到应用商店思路
 1. 获取用户token：输入账号密码或者通过SDK;
@@ -7,6 +7,23 @@
 3. 解析json文件或excel中的sheet页，sheet页中的内容（拓展：excel文件转json文件）；
 4. 通过http.post请求接口，标准的分类特性数据写入平台；
 5. 校验数据写入正确性。
+
+## 特别注意
+发送http POST请求的json格式只用arguments数组里面的对象就可以，不用带arguments、invocationId、target、type，否则会返回错误信息400和请求方法没找到。
+```json
+{
+            "module": "thing",
+            "action": "QuerySpeciesTree",
+            "params": {
+                "id": "380663455457349633",
+                "page": {
+                    "offset": 0,
+                    "limit": 0,
+                    "filter": ""
+                }
+            }
+        }
+```
 
 ## 查询实现
 ### 1.查询标准树
