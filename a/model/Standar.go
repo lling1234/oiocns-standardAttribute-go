@@ -2,7 +2,7 @@ package model
 
 import "github.com/gogf/gf/os/glog"
 
-var PD PayloadData
+var PD PayloadData 
 var GglogFile *glog.Logger
 
 type PayloadData struct {

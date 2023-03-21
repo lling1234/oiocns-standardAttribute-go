@@ -10,12 +10,45 @@ import (
 	"github.com/gogf/gf/os/gfile"
 )
 
+func ExcelParse() []model.Dict {
+	// 打开Excel文件
+	f, err := excelize.OpenFile("基础配置-业务字典.xlsx")
+	if err != nil {
+		model.GglogFile.Info(err)
+		return nil
+	}
+
+	// 读取数据并生成JSON
+	rows := f.GetRows("Sheet1")
+	var excelData []model.Dict
+	for i, row := range rows {
+		// 跳过表头
+		if i == 0 || i == 1 {
+			continue
+		}
+
+		excelData = append(excelData, model.Dict{
+			DictName: row[1],
+			DictCode: row[2],
+
+			DictItemId:   row[6],
+			DictItemName: row[7],
+			DictItemCode: row[8],
+		})
+
+	}
+	fmt.Println("excelData", excelData)
+	fmt.Println("len(excelData)", len(excelData))
+
+	return excelData
+}
+
 func DictParse() []model.Dict {
 	var dict model.Dict
 	var dictArr []model.Dict
 
-	// content := gfile.GetContents("./aCopy.json")
-	content := gfile.GetContents("./a.json")
+	content := gfile.GetContents("./aCopy.json")
+	// content := gfile.GetContents("./a.json")
 	fmt.Printf("content: %v\n", content)
 	var dri model.DictResponseInfo
 	json.Unmarshal([]byte(content), &dri)

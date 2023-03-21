@@ -218,22 +218,16 @@ json响应数据
 
 ```json
 {
-    "arguments": [
-        {
-            "module": "thing",
-            "action": "CreateDict",
-            "params": {
-                "name": "111",
-                "code": "111",
-                "belongId": "380663455457349633",
-                "remark": "111",
-                "speciesId": "423526170806587392"
-            }
-        }
-    ],
-    "invocationId": "14",
-    "target": "Request",
-    "type": 1
+    "module": "thing",
+    "action": "CreateDict",
+    "params": {
+        "name": "55522",
+        "code": "55522",
+        "belongId": "380663455457349633",
+        "public": true,
+        "remark": "55522",
+        "speciesId": "425658752432214016"
+    }
 }
 ```
 

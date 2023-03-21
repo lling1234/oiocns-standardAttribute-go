@@ -10,17 +10,22 @@ func TestDictParse(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			s := DictParse()
-			t.Log("------------------")
-			t.Log(s)
-			t.Log("------------------")
+			// s := DictParse()
+			// t.Log("------------------")
+			// // t.Log(s)
+			// t.Log("------------------")
+			// t.Log("len(s)",len(s))
+
+			e:=ExcelParse()
+
+			PostBlp(e)
 			// for _, v := range s {
 			// 	t.Log("``````````````````````")
 			// 	t.Log(v)
 			// 	t.Log("``````````````````````")
 
 			// }
-			ExcelWrite(s)
+			// ExcelWrite(s)
 
 		})
 	}
