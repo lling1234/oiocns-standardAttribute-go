@@ -12,7 +12,8 @@ import (
 
 func ExcelParse() []model.Dict {
 	// 打开Excel文件
-	f, err := excelize.OpenFile("基础配置-业务字典.xlsx")
+	// f, err := excelize.OpenFile("基础配置-业务字典.xlsx")
+	f, err := excelize.OpenFile("基础配置-业务字典last2.xlsx")
 	if err != nil {
 		model.GglogFile.Info(err)
 		return nil
