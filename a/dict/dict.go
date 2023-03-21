@@ -24,7 +24,7 @@ func ExcelParse() []model.Dict {
 	var excelData []model.Dict
 	for i, row := range rows {
 		// 跳过表头
-		if i == 0 || i == 1 {
+		if i == 0 {
 			continue
 		}
 

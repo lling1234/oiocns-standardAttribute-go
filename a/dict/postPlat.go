@@ -58,7 +58,7 @@ func InsertDIct(dictName, dictCode string) {
 	postDict.Params.Code = dictCode
 	postDict.Params.BelongID = "380663455457349633"
 	postDict.Params.Remark = dictName + " " + dictCode
-	postDict.Params.SpeciesID = "425706835434147840"
+	postDict.Params.SpeciesID = "423541741979832320"
 	postDict.Params.Public = true
 
 	pd, err := json.Marshal(postDict)
