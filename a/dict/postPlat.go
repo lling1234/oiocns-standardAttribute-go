@@ -19,7 +19,7 @@ func PostBlp(data []model.Dict) {
 	var currentDictCode string = ""
 	// var postDict model.PostDict
 
-	for i, _ := range data {
+	for i := range data {
 		fmt.Println("for i----", i)
 
 		if currentDictCode != data[i].DictCode {

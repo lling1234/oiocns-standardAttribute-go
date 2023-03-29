@@ -57,13 +57,13 @@ func DictParse() []model.Dict {
 	dData := dri.Data
 	fmt.Println("len(dData)", len(dData))
 
-	for i, _ := range dData {
+	for i := range dData {
 		dict.DictName = dData[i].DictValue //字典名称
 		dict.DictCode = dData[i].Code
 
 		fmt.Println("len(dData[i].Children)", len(dData[i].Children))
 		if len(dData[i].Children) > 0 {
-			for j, _ := range dData[i].Children {
+			for j := range dData[i].Children {
 				jj := strconv.Itoa(j + 1)
 				dict.DictItemId = jj                               // 字典项序号
 				dict.DictItemName = dData[i].Children[j].DictValue // 字典项名称
