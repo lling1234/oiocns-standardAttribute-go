@@ -1,7 +1,18 @@
 # oiocns-standardAttribute-go
+
 奥集能3.0平台分类标准特性和字典导入工具。
 
+## 导入工具文件
+
+~~分类新建：a\species\species_test.go~~
+
+分类特性：a\excel\excel_test.go
+
+字典：a\dict\dict_test.go
+
+
 ## 上架到应用商店思路
+
 1. 获取用户token：输入账号密码或者通过SDK;
 2. 获取speciesId和speciesCode；
 3. 解析json文件或excel中的sheet页，sheet页中的内容（拓展：excel文件转json文件）；
@@ -9,7 +20,9 @@
 5. 校验数据写入正确性。
 
 ## 特别注意
+
 发送http POST请求的json格式只用arguments数组里面的对象就可以，不用带arguments、invocationId、target、type，否则会返回错误信息400和请求方法没找到。
+
 ```json
 {
             "module": "thing",
@@ -26,6 +39,7 @@
 ```
 
 ## 查询实现
+
 ### 1.查询标准树
 
 ```json
@@ -76,6 +90,7 @@
     "type": 1
 }
 ```
+
 ### 3.查询标准字典定义
 
 ```json
@@ -128,8 +143,6 @@
 }
 ```
 
-
-
 ## 新增实现
 
 接口：http://anyinone.com:800/orginone/kernel/rest/request
@@ -164,7 +177,6 @@ josn请求数据
 ```
 
 ### 2.新增分类特性
-
 
 ```json
 {   

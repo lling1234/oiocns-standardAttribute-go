@@ -10,7 +10,8 @@ import (
 	"time"
 )
 
-var token string = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJiZWxvbmdJZCI6IjM4MDY2MzQ1NTQ1NzM0OTYzMyIsImNvbXBhbnlJZCI6IjM4MDY2MzQ1NTQ1NzM0OTYzMyIsImV4cCI6MTY3OTkxNTc2MSwiaWF0IjoxNjc5OTA4NTYxLCJ1c2VySWQiOiIzNTg2MjY1Nzg2MTc0NzA5NzYifQ.BsmT7czhCoGWHiamxkj84a-14wocojy4XWuqFdEAm5g"
+var token string = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJiZWxvbmdJZCI6IjM4MDY2MzQ1NTQ1NzM0OTYzMyIsImNvbXBhbnlJZCI6IjM4MDY2MzQ1NTQ1NzM0OTYzMyIsImV4cCI6MTY4MDA4ODk3MCwiaWF0IjoxNjgwMDgxNzcwLCJ1c2VySWQiOiIzNTg2MjY1Nzg2MTc0NzA5NzYifQ.1Km4zyWkEFox4Q-gmrq32cKYxDlxxg2h2KGiuyUNIkQ"
+var speciesID string ="428971093794099200"
 var tmpDictID string = ""
 
 func PostBlp(data []model.Dict) {
@@ -58,7 +59,7 @@ func InsertDIct(dictName, dictCode string) {
 	postDict.Params.Code = dictCode
 	postDict.Params.BelongID = "380663455457349633"
 	postDict.Params.Remark = dictName + " " + dictCode
-	postDict.Params.SpeciesID = "428241051162120192"
+	postDict.Params.SpeciesID = speciesID
 	postDict.Params.Public = true
 
 	pd, err := json.Marshal(postDict)
@@ -97,7 +98,7 @@ func InsertDIctItem(dictItemName, dictItemCode string) {
 func PostReqDict(data []byte) {
 	fmt.Println("PostReqDict entering")
 	// 发送HTTP POST请求
-	var url string = "http://anyinone.com:800/orginone/kernel/rest/request"
+	var url string = "http://anyinone.com:888/orginone/kernel/rest/request"
 	req, err := http.NewRequest("POST", url, bytes.NewBuffer(data))
 	if err != nil {
 		model.GglogFile.Info(err)

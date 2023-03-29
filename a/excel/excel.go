@@ -3,6 +3,7 @@ package excel
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"oiocns-standardAttribute-go/a/model"
 	"time"
@@ -14,7 +15,7 @@ func OpenExcelFile(p model.PayloadData) {
 	// 打开Excel文件
 	f, err := excelize.OpenFile(p.FileName)
 	if err != nil {
-		model.GglogFile.Info(err)
+		fmt.Println(err)
 		return
 	}
 
@@ -41,69 +42,69 @@ func OpenExcelFile(p model.PayloadData) {
 		})
 
 	}
-	model.GglogFile.Info("dateStruct", dateStruct)
+	fmt.Println("dateStruct", dateStruct)
 	jsonData, err := json.Marshal(dateStruct)
 	if err != nil {
-		model.GglogFile.Info(err)
+		fmt.Println(err)
 		return
 	}
-	model.GglogFile.Info("jsonData", jsonData)
+	fmt.Println("jsonData", jsonData)
 	var jsonInfo []model.StandardAttributeReq
 	err2 := json.Unmarshal(jsonData, &jsonInfo)
 	if err2 != nil {
-		model.GglogFile.Info("json解析错误", err2)
+		fmt.Println("json解析错误", err2)
 		return
 	}
-	model.GglogFile.Info("jsonInfo[0].Name", jsonInfo[0].Name)
-	model.GglogFile.Info("len(jsonInfo)", len(jsonInfo))
+	fmt.Println("jsonInfo[0].Name", jsonInfo[0].Name)
+	fmt.Println("len(jsonInfo)", len(jsonInfo))
 
-	HttpPostReqLoop(jsonInfo)
+	HttpPostReqLoop(jsonInfo,p.Token)
 
 }
-func HttpPostReqLoop(jsonInfo []model.StandardAttributeReq) {
-	model.GglogFile.Info("-------------HttpPostRequest start---------------")
+func HttpPostReqLoop(jsonInfo []model.StandardAttributeReq,token string) {
+	fmt.Println("-------------HttpPostRequest start---------------")
 	for i := 0; i < len(jsonInfo); i++ {
 
 		jsonData1 := model.StandardAttribute{Module: "thing", Action: "CreateAttribute", Params: jsonInfo[i]}
 		jsonDataBody, err := json.Marshal(jsonData1)
 		if err != nil {
-			model.GglogFile.Info("json.Marshal err", err)
+			fmt.Println("json.Marshal err", err)
 			return
 		}
-		HttpPostRequest(jsonDataBody)
+		HttpPostRequest(jsonDataBody,token)
 		time.Sleep(1000)
 	}
-	model.GglogFile.Info("-------------HttpPostRequest end---------------")
+	fmt.Println("-------------HttpPostRequest end---------------")
 }
 
-func HttpPostRequest(jsonData []byte) {
-	model.GglogFile.Info("HttpPostRequest start")
+func HttpPostRequest(jsonData []byte,token string) {
+	fmt.Println("HttpPostRequest start")
 	var jsonInfo model.StandardAttribute
 	err2 := json.Unmarshal(jsonData, &jsonInfo)
 	if err2 != nil {
-		model.GglogFile.Info("json解析错误", err2)
+		fmt.Println("json解析错误", err2)
 		return
 	}
-	model.GglogFile.Info("jsonInfo", jsonInfo)
+	fmt.Println("jsonInfo", jsonInfo)
 	// 发送HTTP POST请求
-	req, err := http.NewRequest("POST", "http://anyinone.com:800/orginone/kernel/rest/request", bytes.NewBuffer(jsonData))
+	req, err := http.NewRequest("POST", "http://anyinone.com:888/orginone/kernel/rest/request", bytes.NewBuffer(jsonData))
 	if err != nil {
-		model.GglogFile.Info(err)
+		fmt.Println(err)
 		return
 	}
-	req.Header.Set("Authorization", model.PD.Token)
+	req.Header.Set("Authorization", token)
 	req.Header.Set("Content-Type", "application/json")
 
 	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
-		model.GglogFile.Info(err)
+		fmt.Println(err)
 		return
 	}
 	defer resp.Body.Close()
 	time.Sleep(1000)
 
 	// 输出响应结果
-	model.GglogFile.Info(resp.Status)
+	fmt.Println(resp.Status)
 	// time.Sleep(1000);
 }
