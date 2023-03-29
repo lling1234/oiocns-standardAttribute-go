@@ -132,7 +132,13 @@
 
 ## 新增实现
 
+接口：http://anyinone.com:800/orginone/kernel/rest/request
+请求方式：post
+请求头部信息：Authorization：xxx
+
 ### 1.新增标准分类
+
+josn请求数据
 
 ```json
 {
@@ -159,11 +165,6 @@
 
 ### 2.新增分类特性
 
-接口：http://anyinone.com:800/orginone/kernel/rest/request
-请求方式：post
-请求头部信息：Authorization：xxx
-
-josn请求数据
 
 ```json
 {   
@@ -253,4 +254,3 @@ json响应数据
     "type": 1
 }
 ```
-

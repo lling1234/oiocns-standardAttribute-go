@@ -19,7 +19,7 @@ func GFServer() {
 	model.GglogFile.SetLevel(glog.LEVEL_INFO)
 	model.GglogFile.SetPath("log")
 	model.GglogFile.Info("1111")
-	s.SetPort(8080) // 设置端口号为8080
+	s.SetPort(8081) // 设置端口号为8080
 	s.BindHandler("/upload", func(r *ghttp.Request) {
 		if r.Method == "POST" {
 			file := r.GetUploadFile("file")

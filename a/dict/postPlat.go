@@ -10,7 +10,7 @@ import (
 	"time"
 )
 
-var token string = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJiZWxvbmdJZCI6IjM4MDY2MzQ1NTQ1NzM0OTYzMyIsImNvbXBhbnlJZCI6IjM4MDY2MzQ1NTQ1NzM0OTYzMyIsImV4cCI6MTY3OTM3MDcyMiwiaWF0IjoxNjc5MzYzNTIyLCJ1c2VySWQiOiIzNTg2MjY1Nzg2MTc0NzA5NzYifQ.6ZZ_6kAM5u7hmpTsFevyvnZGboYgvTOsiY01JUfg-H0"
+var token string = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJiZWxvbmdJZCI6IjM4MDY2MzQ1NTQ1NzM0OTYzMyIsImNvbXBhbnlJZCI6IjM4MDY2MzQ1NTQ1NzM0OTYzMyIsImV4cCI6MTY3OTkxNTc2MSwiaWF0IjoxNjc5OTA4NTYxLCJ1c2VySWQiOiIzNTg2MjY1Nzg2MTc0NzA5NzYifQ.BsmT7czhCoGWHiamxkj84a-14wocojy4XWuqFdEAm5g"
 var tmpDictID string = ""
 
 func PostBlp(data []model.Dict) {
@@ -58,7 +58,7 @@ func InsertDIct(dictName, dictCode string) {
 	postDict.Params.Code = dictCode
 	postDict.Params.BelongID = "380663455457349633"
 	postDict.Params.Remark = dictName + " " + dictCode
-	postDict.Params.SpeciesID = "423526170806587392"
+	postDict.Params.SpeciesID = "428241051162120192"
 	postDict.Params.Public = true
 
 	pd, err := json.Marshal(postDict)

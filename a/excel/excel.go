@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"net/http"
 	"oiocns-standardAttribute-go/a/model"
+	"time"
 
 	"github.com/360EntSecGroup-Skylar/excelize"
 )
@@ -70,6 +71,7 @@ func HttpPostReqLoop(jsonInfo []model.StandardAttributeReq) {
 			return
 		}
 		HttpPostRequest(jsonDataBody)
+		time.Sleep(1000)
 	}
 	model.GglogFile.Info("-------------HttpPostRequest end---------------")
 }
@@ -99,6 +101,7 @@ func HttpPostRequest(jsonData []byte) {
 		return
 	}
 	defer resp.Body.Close()
+	time.Sleep(1000)
 
 	// 输出响应结果
 	model.GglogFile.Info(resp.Status)
